@@ -4,44 +4,59 @@ import { Section } from "@/components/Section";
 import { ComparisonBlock, HighlightBox, IconCard, InfoGrid, StepFlow, SummaryCard } from "@/components/VisualBlocks";
 
 const principles = [
-  { title: "Uso guiado", description: "El profesorado indica cuándo, cómo y para qué puede utilizarse." },
-  { title: "Uso declarado", description: "El alumnado informa si ha usado IA y con qué finalidad." },
-  { title: "Revisión crítica", description: "Toda respuesta debe comprobarse, adaptarse y justificar su utilidad." },
+  {
+    title: "Uso responsable",
+    description: "La IA puede apoyar el aprendizaje, pero no debe sustituir el trabajo, la comprensión ni la responsabilidad académica del alumnado.",
+  },
+  {
+    title: "Uso declarado",
+    description: "Cuando se utilice IA en una tarea académica, debe indicarse de forma transparente qué herramienta se ha usado y con qué finalidad.",
+  },
+  {
+    title: "Revisión crítica",
+    description: "Toda respuesta generada por IA debe revisarse, contrastarse y adaptarse al contexto de la asignatura antes de ser utilizada.",
+  },
+  {
+    title: "Honestidad académica",
+    description: "El producto final debe reflejar el criterio, la elaboración personal y la comprensión real del estudiante.",
+  },
 ];
 
 const recommendedUses = [
-  "Organizar ideas o esquemas de estudio.",
-  "Generar ejemplos que después se revisan.",
-  "Mejorar la claridad de un texto propio.",
-  "Comparar explicaciones de un concepto.",
-  "Preparar preguntas para estudiar.",
-  "Crear borradores que se transforman críticamente.",
+  "Organizar ideas o esquemas iniciales.",
+  "Formular preguntas de estudio.",
+  "Revisar la claridad de un texto propio.",
+  "Generar ejemplos que después serán comprobados.",
+  "Comparar explicaciones sobre un concepto.",
+  "Mejorar una presentación sin sustituir el contenido personal.",
+  "Apoyar la preparación previa de una sesión.",
 ];
 
 const unsuitableUses = [
-  "Entregar textos generados como si fueran propios.",
-  "Usar IA sin declararlo cuando se solicite.",
+  "Entregar como propio un texto generado íntegramente por IA.",
+  "Usar IA sin declararlo cuando ha influido en la tarea.",
   "Copiar respuestas sin comprenderlas.",
   "Aceptar información sin verificarla.",
-  "Incluir fuentes inventadas o no comprobadas.",
-  "Sustituir el trabajo personal por respuestas automáticas.",
+  "Usar referencias o fuentes no comprobadas.",
+  "Sustituir el estudio personal por respuestas automáticas.",
+  "Depender de la IA para resolver cualquier actividad académica.",
 ];
 
 const risks = [
-  { title: "Errores", description: "Puede ofrecer información incorrecta o incompleta." },
-  { title: "Fuentes falsas", description: "Puede inventar referencias, datos o citas." },
-  { title: "Sesgos", description: "Puede reproducir enfoques parciales o poco contextualizados." },
-  { title: "Dependencia", description: "Un uso excesivo reduce autonomía y criterio propio." },
-  { title: "Transparencia", description: "No declararla puede generar problemas académicos." },
-  { title: "Calidad", description: "El resultado necesita revisión, contraste y adaptación." },
+  { title: "Errores", description: "Errores o información imprecisa." },
+  { title: "Fuentes no fiables", description: "Fuentes inventadas o no fiables." },
+  { title: "Sesgos", description: "Sesgos en las respuestas." },
+  { title: "Pérdida de autonomía", description: "Pérdida de autonomía." },
+  { title: "Falta de transparencia", description: "Falta de transparencia." },
+  { title: "Autoría académica", description: "Problemas de autoría académica." },
 ];
 
 const integrationSteps = [
-  { title: "Definir tarea", description: "Aclarar objetivo, límites y producto esperado." },
-  { title: "Usar con guía", description: "Plantear prompts alineados con la actividad." },
-  { title: "Contrastar", description: "Revisar precisión, fuentes y adecuación académica." },
-  { title: "Transformar", description: "Adaptar el resultado con criterio propio." },
-  { title: "Declarar", description: "Indicar el uso realizado si la tarea lo requiere." },
+  { title: "Pensar", description: "Aclarar qué se necesita antes de pedir ayuda." },
+  { title: "Usar", description: "Aplicar la IA solo como apoyo puntual." },
+  { title: "Verificar", description: "Contrastar información, fuentes y resultados." },
+  { title: "Adaptar", description: "Reelaborar con criterio propio y contexto académico." },
+  { title: "Declarar", description: "Indicar herramienta y finalidad cuando influya en la tarea." },
 ];
 
 export default function InteligenciaArtificialPage() {
@@ -50,31 +65,31 @@ export default function InteligenciaArtificialPage() {
       <PageHeader
         eyebrow="Uso responsable"
         title="Inteligencia Artificial"
-        description="La IA se incorpora como herramienta de apoyo al aprendizaje desde un enfoque crítico, ético, guiado y supervisado."
+        description="La IA se incorpora como herramienta de apoyo al aprendizaje desde un enfoque ético, transparente, crítico y responsable."
       />
 
-      <Section title="Papel de la IA en el proyecto" description="La IA ayuda en tareas concretas, pero no sustituye el aprendizaje ni la autoría académica.">
+      <Section title="Papel de la IA en el proyecto" description="La IA puede ayudar en tareas concretas, pero no sustituye el aprendizaje, la comprensión ni la autoría académica.">
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-          <SummaryCard icon="IA" title="Apoyo al aprendizaje" description="Puede ayudar a buscar, ordenar, explicar, revisar y mejorar ideas, siempre con supervisión y contraste." />
+          <SummaryCard icon="IA" title="Apoyo al aprendizaje" description="Puede ayudar a ordenar ideas, revisar textos, comparar explicaciones o preparar preguntas, siempre con sentido común y verificación posterior." />
           <HighlightBox eyebrow="Regla básica" tone="blue">
             La IA puede ayudarte a pensar, organizar, revisar y mejorar, pero no debe sustituir tu aprendizaje ni tu responsabilidad académica.
           </HighlightBox>
         </div>
       </Section>
 
-      <Section title="Tres principios de uso" description="Criterios comunes para que el uso de IA sea comprensible, transparente y evaluable.">
-        <InfoGrid>
+      <Section title="Principios para un uso responsable de la IA" description="Criterios comunes para utilizar IA con transparencia, honestidad académica y revisión crítica.">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {principles.map((principle, index) => (
-            <SummaryCard key={principle.title} icon={`${index + 1}`} title={principle.title} description={principle.description} tone={index === 1 ? 'slate' : 'blue'} />
+            <SummaryCard key={principle.title} icon={`${index + 1}`} title={principle.title} description={principle.description} tone={index % 2 === 0 ? 'blue' : 'slate'} />
           ))}
-        </InfoGrid>
+        </div>
       </Section>
 
-      <Section title="Usos recomendables y no adecuados" description="Comparación rápida para orientar decisiones del alumnado.">
+      <Section title="Usos recomendables y no adecuados" description="Orientaciones breves para diferenciar el apoyo útil de usos que comprometen el aprendizaje o la honestidad académica.">
         <ComparisonBlock leftTitle="Usos recomendables" rightTitle="Usos no adecuados" leftItems={recommendedUses} rightItems={unsuitableUses} />
       </Section>
 
-      <Section title="Riesgos principales" description="Aspectos que deben revisarse antes de aceptar cualquier respuesta generada.">
+      <Section title="Riesgos principales" description="Aspectos que conviene revisar antes de aceptar o incorporar cualquier respuesta generada por IA.">
         <InfoGrid>
           {risks.map((risk, index) => (
             <IconCard key={risk.title} icon="!" title={risk.title} description={risk.description} tone={index % 2 === 0 ? 'amber' : 'slate'} />
@@ -82,7 +97,7 @@ export default function InteligenciaArtificialPage() {
         </InfoGrid>
       </Section>
 
-      <Section title="Cómo integrar la IA de forma responsable" description="Proceso breve para utilizarla como apoyo y no como sustitución del trabajo académico.">
+      <Section title="Cómo integrar la IA de forma responsable" description="Proceso breve para usarla como apoyo, mantener el criterio propio y declarar su influencia cuando corresponda.">
         <StepFlow steps={integrationSteps} compact />
       </Section>
 

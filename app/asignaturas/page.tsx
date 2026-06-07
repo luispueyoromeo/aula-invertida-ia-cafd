@@ -1,15 +1,15 @@
 import { PageHeader } from "@/components/PageHeader";
 import { Section } from "@/components/Section";
 import { SubjectCard } from "@/components/SubjectCard";
-import { StepFlow, SummaryCard } from "@/components/VisualBlocks";
+import { StepGrid, SummaryCard } from "@/components/VisualBlocks";
 import { subjects } from "@/lib/subjects";
 
 const sharedSteps = [
-  { title: "Preparación", description: "Trabajo previo con materiales y preguntas guía." },
-  { title: "IA guiada", description: "Apoyo puntual, declarado y revisado." },
-  { title: "Práctica", description: "Aplicación en clase y feedback docente." },
-  { title: "Evidencia", description: "Producto o resultado de aprendizaje." },
-  { title: "Evaluación", description: "Cuestionario común y valoración final." },
+  { title: "Preparación previa", description: "Materiales, preguntas o tareas iniciales." },
+  { title: "Apoyo de IA", description: "Uso puntual, declarado y revisado." },
+  { title: "Aplicación práctica", description: "Trabajo en clase y feedback docente." },
+  { title: "Evidencia de aprendizaje", description: "Producto, tarea o propuesta final." },
+  { title: "Evaluación común", description: "Cuestionario y valoración de la experiencia." },
 ];
 
 const courses = ["1.º curso", "2.º curso", "3.º curso", "4.º curso"];
@@ -24,13 +24,13 @@ export default function AsignaturasPage() {
       />
 
       <Section title="Todas las asignaturas comparten" description="Una estructura común que facilita coordinación, explicación al alumnado y evaluación de la experiencia.">
-        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid gap-6">
           <SummaryCard
             icon="C"
             title="Marco común del proyecto"
-            description="Misma lógica de trabajo para asignaturas distintas: preparación, apoyo guiado de IA, práctica, evidencia y valoración final."
+            description="Todas las asignaturas mantienen su autonomía docente, pero comparten una misma lógica de trabajo: preparación, apoyo responsable de IA, práctica, evidencia y evaluación final."
           />
-          <StepFlow steps={sharedSteps} compact />
+          <StepGrid steps={sharedSteps} />
         </div>
       </Section>
 
