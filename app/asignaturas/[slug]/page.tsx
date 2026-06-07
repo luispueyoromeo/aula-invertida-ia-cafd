@@ -24,7 +24,7 @@ const moduleSections = [
   },
   {
     title: "Integración de IA",
-    description: "Uso guiado, declarado y revisado de herramientas de inteligencia artificial.",
+    description: "Uso puntual, declarado y revisado de herramientas de inteligencia artificial.",
   },
   {
     title: "Producto o evidencia",

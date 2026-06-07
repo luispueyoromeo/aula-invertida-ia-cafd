@@ -8,7 +8,7 @@ import { subjects } from "@/lib/subjects";
 
 const commonSteps = [
   { title: "Preparación previa", description: "Materiales breves, preguntas guía y primera aproximación al contenido." },
-  { title: "Uso guiado de IA", description: "Apoyo para organizar, revisar o contrastar ideas cuando la tarea lo permita." },
+  { title: "Apoyo responsable de IA", description: "Uso puntual para organizar, revisar o contrastar ideas con transparencia." },
   { title: "Aplicación práctica", description: "Sesión presencial centrada en resolver, crear, debatir y recibir feedback." },
   { title: "Evidencia de aprendizaje", description: "Producto sencillo que muestra comprensión, aplicación y revisión crítica." },
   { title: "Cuestionario final", description: "Valoración común de la experiencia y del impacto percibido por el alumnado." },
@@ -95,7 +95,7 @@ export default function HomePage() {
         <InfoGrid>
           <SummaryCard icon="1" title="Explicación rápida" description="Bloques breves, tarjetas y pasos para comprender el proyecto sin leer textos extensos." />
           <SummaryCard icon="2" tone="slate" title="Ruta compartida" description="Una secuencia común para preparar, aplicar, evidenciar y evaluar el aprendizaje." />
-          <SummaryCard icon="3" title="Uso responsable" description="Criterios simples para integrar IA con transparencia, guía docente y revisión crítica." />
+          <SummaryCard icon="3" title="Uso responsable" description="Criterios simples para integrar IA con transparencia, sentido crítico y revisión académica." />
         </InfoGrid>
       </Section>
     </div>

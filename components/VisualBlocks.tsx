@@ -130,6 +130,22 @@ export function StepFlow({ steps, compact = false }: StepFlowProps) {
   );
 }
 
+export function StepGrid({ steps }: { steps: Step[] }) {
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+      {steps.map((step, index) => (
+        <article key={step.title} className="h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:border-institutional-200 md:p-6">
+          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-institutional-800 text-base font-black text-white" aria-hidden="true">
+            {step.icon ?? index + 1}
+          </span>
+          <h3 className="mt-5 text-lg font-bold text-slate-950">{step.title}</h3>
+          <p className="mt-3 text-sm leading-6 text-slate-600">{step.description}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 type TimelineStepsProps = {
   steps: Step[];
 };
