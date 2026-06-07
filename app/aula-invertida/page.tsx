@@ -1,26 +1,30 @@
 import { Card } from "@/components/Card";
 import { PageHeader } from "@/components/PageHeader";
-import { PhaseCard } from "@/components/PhaseCard";
 import { Section } from "@/components/Section";
+import { IconCard, InfoGrid, SummaryCard, TimelineSteps } from "@/components/VisualBlocks";
+
+const phases = [
+  { title: "Antes de la sesión", description: "Consulta de materiales, preguntas guía y preparación autónoma." },
+  { title: "Durante la sesión", description: "Aplicación práctica, debate, colaboración, feedback y resolución de dudas." },
+  { title: "Después de la sesión", description: "Mejora de productos, reflexión y entrega de evidencias de aprendizaje." },
+];
 
 const benefits = [
-  "Mayor implicación del alumnado.",
-  "Mejor conexión entre teoría y práctica.",
-  "Desarrollo del aprendizaje autónomo.",
-  "Fomento del pensamiento crítico.",
-  "Mejora de la participación en clase.",
-  "Generación de materiales y evidencias transferibles.",
-  "Mayor coherencia metodológica entre asignaturas.",
+  { title: "Más participación", description: "El alumnado llega preparado para intervenir y practicar." },
+  { title: "Mejor conexión", description: "La teoría se aplica a situaciones reales del ámbito físico-deportivo." },
+  { title: "Autonomía", description: "Favorece planificación, responsabilidad y aprendizaje activo." },
+  { title: "Feedback útil", description: "La sesión presencial permite orientar y corregir en tiempo real." },
+  { title: "Evidencias", description: "Los productos muestran comprensión y aplicación del contenido." },
+  { title: "Coherencia", description: "Facilita una línea metodológica común entre asignaturas." },
 ];
 
 const activities = [
-  "Preparación de vídeos, lecturas o infografías antes de clase.",
-  "Diseño de tareas prácticas.",
-  "Análisis de situaciones deportivas.",
-  "Resolución de problemas aplicados.",
-  "Elaboración de propuestas de intervención.",
-  "Presentación de materiales creados por el alumnado.",
-  "Autoevaluación y coevaluación.",
+  "Preparar vídeos, lecturas o infografías breves.",
+  "Resolver casos prácticos en clase.",
+  "Analizar situaciones deportivas reales.",
+  "Diseñar tareas o propuestas de intervención.",
+  "Presentar materiales creados por el alumnado.",
+  "Realizar autoevaluación o coevaluación.",
 ];
 
 export default function AulaInvertidaPage() {
@@ -29,69 +33,71 @@ export default function AulaInvertidaPage() {
       <PageHeader
         eyebrow="Metodología activa"
         title="Aula Invertida"
-        description="Una estrategia para transformar el tiempo presencial en un espacio de aplicación, análisis, debate, práctica y reflexión."
+        description="Una estrategia para reservar la sesión presencial a la aplicación, el análisis, la práctica, el debate y la reflexión guiada."
       />
 
-      <Section title="Qué es y por qué se utiliza">
-        <div className="grid gap-6 lg:grid-cols-2">
+      <Section title="Qué es" description="La explicación básica del modelo en formato breve y operativo.">
+        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <SummaryCard
+            icon="AI"
+            title="Preparar antes para aplicar mejor"
+            description="El alumnado revisa materiales antes de clase y el tiempo presencial se dedica a practicar, analizar y resolver problemas."
+          />
           <Card>
-            <p className="text-lg leading-8 text-slate-700">
-              El aula invertida, o flipped classroom, es una metodología activa en la que el alumnado realiza una preparación previa antes de la sesión presencial, mientras que el tiempo de clase se dedica preferentemente a la aplicación práctica, el análisis, la resolución de problemas, el diseño de tareas, el debate y la reflexión.
-            </p>
-          </Card>
-          <Card>
-            <p className="text-lg leading-8 text-slate-700">
-              En el contexto del Grado en CAFD, esta metodología permite optimizar el tiempo presencial y conectar los contenidos teóricos con situaciones prácticas propias de la actividad física y el deporte. El alumnado no se limita a recibir información, sino que participa activamente en la construcción, aplicación y revisión de su aprendizaje.
-            </p>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {['Trabajo previo', 'Clase activa', 'Evidencia final'].map((item, index) => (
+                <div key={item} className="rounded-2xl bg-slate-50 p-4 text-center">
+                  <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-institutional-800 text-sm font-black text-white">{index + 1}</span>
+                  <p className="mt-3 font-bold text-slate-900">{item}</p>
+                </div>
+              ))}
+            </div>
           </Card>
         </div>
       </Section>
 
-      <Section title="Estructura en tres fases">
-        <div className="grid gap-6 md:grid-cols-3">
-          <PhaseCard step="1" title="Antes de la sesión" description="Preparación autónoma, consulta de materiales, análisis de contenidos o creación de recursos." />
-          <PhaseCard step="2" title="Durante la sesión" description="Aplicación práctica, discusión, resolución de problemas, diseño de propuestas, trabajo colaborativo y feedback." />
-          <PhaseCard step="3" title="Después de la sesión" description="Reflexión, mejora de productos, entrega de evidencias y evaluación formativa." />
-        </div>
+      <Section title="Esquema principal en tres fases" description="Una secuencia simple para explicar cómo se organiza la experiencia.">
+        <TimelineSteps steps={phases} />
       </Section>
 
-      <Section title="Papel del alumnado y del profesorado">
+      <Section title="Rol del alumnado y del profesorado" description="Ambos perfiles tienen funciones claras y complementarias.">
         <div className="grid gap-6 md:grid-cols-2">
-          <Card>
-            <h2 className="text-2xl font-bold text-slate-900">Papel del alumnado</h2>
-            <p className="mt-4 leading-7 text-slate-600">
-              El alumnado asume un papel activo en el proceso de aprendizaje. Debe preparar los contenidos, participar en las actividades presenciales, elaborar materiales o propuestas, reflexionar sobre su aprendizaje y asumir responsabilidad sobre su progreso.
-            </p>
-          </Card>
-          <Card>
-            <h2 className="text-2xl font-bold text-slate-900">Papel del profesorado</h2>
-            <p className="mt-4 leading-7 text-slate-600">
-              El profesorado diseña el proceso, orienta el trabajo previo, guía la sesión presencial, facilita retroalimentación y evalúa las evidencias generadas. Su función no desaparece, sino que se transforma hacia un rol de acompañamiento, orientación y evaluación formativa.
-            </p>
-          </Card>
+          <SummaryCard icon="A" title="Rol del alumnado" description="Preparar contenidos, participar, crear productos, revisar su aprendizaje y asumir responsabilidad sobre su progreso.">
+            <ul className="grid gap-2 text-sm font-semibold text-slate-700 sm:grid-cols-2">
+              {['Preparar', 'Participar', 'Crear', 'Reflexionar'].map((item) => <li key={item} className="rounded-xl bg-white p-3 ring-1 ring-slate-200">{item}</li>)}
+            </ul>
+          </SummaryCard>
+          <SummaryCard icon="P" tone="slate" title="Rol del profesorado" description="Diseñar el proceso, orientar el trabajo previo, guiar la práctica, aportar feedback y evaluar evidencias.">
+            <ul className="grid gap-2 text-sm font-semibold text-slate-700 sm:grid-cols-2">
+              {['Diseñar', 'Guiar', 'Acompañar', 'Evaluar'].map((item) => <li key={item} className="rounded-xl bg-white p-3 ring-1 ring-slate-200">{item}</li>)}
+            </ul>
+          </SummaryCard>
         </div>
       </Section>
 
-      <Section title="Beneficios esperados y ejemplos de actividades">
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card>
-            <h2 className="text-2xl font-bold text-slate-900">Beneficios esperados</h2>
-            <ul className="mt-4 space-y-3 text-slate-600">
-              {benefits.map((benefit) => <li key={benefit}>• {benefit}</li>)}
-            </ul>
-          </Card>
-          <Card>
-            <h2 className="text-2xl font-bold text-slate-900">Ejemplos de actividades</h2>
-            <ul className="mt-4 space-y-3 text-slate-600">
-              {activities.map((activity) => <li key={activity}>• {activity}</li>)}
-            </ul>
-          </Card>
-        </div>
+      <Section title="Beneficios esperados" description="Resultados pedagógicos resumidos en tarjetas breves.">
+        <InfoGrid>
+          {benefits.map((benefit, index) => (
+            <IconCard key={benefit.title} icon={`${index + 1}`} title={benefit.title} description={benefit.description} tone={index % 2 === 0 ? 'blue' : 'slate'} />
+          ))}
+        </InfoGrid>
       </Section>
 
-      <div className="rounded-[2rem] bg-institutional-900 p-8 text-center text-white shadow-soft">
-        <p className="text-2xl font-bold leading-9">
-          “El aula invertida no elimina la docencia presencial, sino que transforma el tiempo presencial en un espacio de aplicación, análisis, debate, práctica y reflexión”.
+      <Section title="Ejemplos de actividades" description="Ideas aplicables a asignaturas del Grado en CAFD.">
+        <Card>
+          <ul className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {activities.map((activity) => (
+              <li key={activity} className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm font-semibold leading-6 text-slate-700">
+                {activity}
+              </li>
+            ))}
+          </ul>
+        </Card>
+      </Section>
+
+      <div className="rounded-[2rem] bg-institutional-900 p-7 text-center text-white shadow-soft">
+        <p className="text-xl font-bold leading-8">
+          El aula invertida no reduce la docencia presencial: la convierte en un espacio de aplicación, práctica y feedback.
         </p>
       </div>
     </div>

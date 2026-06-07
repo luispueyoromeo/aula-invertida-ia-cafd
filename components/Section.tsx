@@ -1,19 +1,18 @@
 import type { ReactNode } from "react";
+import { SectionIntro } from "@/components/VisualBlocks";
 
 type SectionProps = {
   eyebrow?: string;
   title: string;
+  description?: string;
   children: ReactNode;
   className?: string;
 };
 
-export function Section({ eyebrow, title, children, className = "" }: SectionProps) {
+export function Section({ eyebrow, title, description, children, className = "" }: SectionProps) {
   return (
-    <section className={`py-10 ${className}`}>
-      <div className="mb-6 max-w-3xl">
-        {eyebrow ? <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-institutional-700">{eyebrow}</p> : null}
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">{title}</h2>
-      </div>
+    <section className={`py-9 md:py-11 ${className}`}>
+      <SectionIntro eyebrow={eyebrow} title={title} description={description} />
       {children}
     </section>
   );
