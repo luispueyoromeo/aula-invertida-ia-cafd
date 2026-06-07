@@ -44,15 +44,16 @@ export default function CuestionarioFinalPage() {
       </Section>
 
       <Section title="Acceso al cuestionario">
-        <HighlightBox eyebrow="Próximamente" title="Formulario pendiente de incorporación" tone="slate">
-          El enlace definitivo será facilitado por el profesorado responsable cuando corresponda.
+        <HighlightBox eyebrow="Google Forms" title="Formulario de respuesta" tone="slate">
+          El cuestionario se responderá mediante Google Forms y las respuestas serán tratadas de forma anónima con fines docentes e investigadores vinculados al proyecto.
           <div className="mt-6">
             <a
-              href="#"
-              aria-disabled="true"
-              className="inline-flex cursor-not-allowed rounded-full bg-slate-300 px-6 py-3 text-sm font-bold text-slate-600"
+              href="https://forms.gle/HrrjAXsARvt1jJT77"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-full bg-institutional-800 px-6 py-3 text-sm font-bold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-institutional-900 focus:outline-none focus:ring-2 focus:ring-institutional-500 focus:ring-offset-2"
             >
-              Acceder al cuestionario
+              Responder cuestionario
             </a>
           </div>
         </HighlightBox>
