@@ -2,26 +2,16 @@ import Link from "next/link";
 import { Card } from "@/components/Card";
 import { InstitutionalLogoPlaceholder } from "@/components/InstitutionalLogoPlaceholder";
 import { PageHeader } from "@/components/PageHeader";
-import { PhaseCard } from "@/components/PhaseCard";
 import { Section } from "@/components/Section";
+import { HighlightBox, InfoGrid, StepFlow, SummaryCard } from "@/components/VisualBlocks";
 import { subjects } from "@/lib/subjects";
 
-const phases = [
-  {
-    step: "1",
-    title: "Antes de la sesión",
-    description: "Preparación previa del alumnado, consulta de materiales, análisis de contenidos y posible uso guiado de IA.",
-  },
-  {
-    step: "2",
-    title: "Durante la sesión",
-    description: "Aplicación práctica en clase, trabajo colaborativo, debate, feedback y conexión entre teoría y práctica.",
-  },
-  {
-    step: "3",
-    title: "Después de la sesión",
-    description: "Generación o mejora de evidencias de aprendizaje, reflexión y evaluación final mediante un cuestionario común.",
-  },
+const commonSteps = [
+  { title: "Preparación previa", description: "Materiales breves, preguntas guía y primera aproximación al contenido." },
+  { title: "Uso guiado de IA", description: "Apoyo para organizar, revisar o contrastar ideas cuando la tarea lo permita." },
+  { title: "Aplicación práctica", description: "Sesión presencial centrada en resolver, crear, debatir y recibir feedback." },
+  { title: "Evidencia de aprendizaje", description: "Producto sencillo que muestra comprensión, aplicación y revisión crítica." },
+  { title: "Cuestionario final", description: "Valoración común de la experiencia y del impacto percibido por el alumnado." },
 ];
 
 export default function HomePage() {
@@ -30,89 +20,84 @@ export default function HomePage() {
       <PageHeader
         eyebrow="Proyecto de Innovación Docente · Universidad de Zaragoza"
         title="Aula Invertida e IA en CAFD"
-        description="Portal común para presentar el proyecto, coordinar asignaturas participantes y orientar el uso responsable de metodologías activas e inteligencia artificial."
+        description="Portal común para coordinar asignaturas, explicar el marco metodológico y orientar un uso responsable de la inteligencia artificial en el Grado en CAFD."
       >
         <InstitutionalLogoPlaceholder />
       </PageHeader>
 
-      <Section eyebrow="Inicio" title="Presentación general del proyecto">
-        <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <Card>
-            <p className="text-lg leading-8 text-slate-700">
-              Este portal reúne el marco general del proyecto de innovación docente Aula Invertida e IA en CAFD, desarrollado en el Grado en Ciencias de la Actividad Física y del Deporte de la Universidad de Zaragoza. Su finalidad es ofrecer un espacio común que permita coordinar las experiencias docentes de las asignaturas participantes, visibilizar el marco metodológico compartido y orientar al alumnado en el uso responsable de metodologías activas e inteligencia artificial.
-            </p>
-          </Card>
-          <Card className="bg-institutional-50">
-            <h3 className="text-xl font-bold text-institutional-900">Objetivo general</h3>
-            <p className="mt-3 leading-7 text-slate-700">
-              Mejorar el proceso de enseñanza-aprendizaje en el Grado en Ciencias de la Actividad Física y del Deporte mediante una implementación coordinada del aula invertida y el uso responsable de la inteligencia artificial, estableciendo una línea metodológica común a lo largo de la titulación.
-            </p>
-          </Card>
+      <Section eyebrow="Inicio" title="Una web para explicar el proyecto" description="Síntesis institucional del proyecto, con una estructura común para docentes y alumnado.">
+        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+          <SummaryCard
+            icon="P"
+            eyebrow="Tarjeta resumen"
+            title="Proyecto coordinado de innovación docente"
+            description="Integra aula invertida e IA como apoyo pedagógico en distintas asignaturas del Grado en Ciencias de la Actividad Física y del Deporte."
+          >
+            <div className="grid gap-3 sm:grid-cols-3">
+              {['Coordinación', 'Claridad', 'Evidencias'].map((item) => (
+                <span key={item} className="rounded-full bg-white px-3 py-2 text-center text-sm font-bold text-institutional-800 ring-1 ring-institutional-100">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </SummaryCard>
+          <SummaryCard
+            icon="O"
+            tone="slate"
+            eyebrow="Objetivo general"
+            title="Mejorar el aprendizaje"
+            description="Crear una línea metodológica común que combine preparación autónoma, práctica presencial, revisión crítica y evaluación compartida."
+          />
         </div>
       </Section>
 
-      <Section title="Finalidad, MARE-A y marco común">
-        <div className="grid gap-6 md:grid-cols-3">
-          <Card>
-            <h3 className="text-xl font-bold text-slate-900">Finalidad</h3>
-            <p className="mt-3 leading-7 text-slate-600">
-              El proyecto pretende favorecer el papel activo del alumnado mediante el trabajo autónomo previo, la creación de materiales, la aplicación práctica en el aula y la reflexión sobre el propio aprendizaje. La inteligencia artificial se integra como herramienta de apoyo, siempre desde un enfoque crítico, ético, guiado y fundamentado.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="text-xl font-bold text-slate-900">Relación con MARE-A</h3>
-            <p className="mt-3 leading-7 text-slate-600">
-              El proyecto se vincula al Grupo de Innovación Docente MARE-A, orientado al desarrollo de metodologías activas y recursos de enseñanza-aprendizaje. La aplicación web actúa como espacio de referencia para coordinar, ordenar y presentar las experiencias desarrolladas en el marco del proyecto.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="text-xl font-bold text-slate-900">Marco metodológico común</h3>
-            <p className="mt-3 leading-7 text-slate-600">
-              Aunque cada asignatura mantiene su autonomía y sus particularidades, todas las experiencias se articulan en torno a una estructura común: preparación previa del alumnado, posible uso guiado de IA, aplicación práctica en clase, generación de un producto o evidencia de aprendizaje y evaluación final mediante un cuestionario común.
-            </p>
-          </Card>
-        </div>
-      </Section>
-
-      <Section title="Asignaturas participantes">
-        <Card>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {subjects.map((subject) => (
-              <Link key={subject.slug} href={`/asignaturas/${subject.slug}`} className="rounded-xl border border-slate-200 p-4 font-semibold text-slate-700 transition hover:border-institutional-200 hover:bg-institutional-50 hover:text-institutional-900">
-                <span className="block text-sm text-slate-500">{subject.course}</span>
-                {subject.name}
-              </Link>
-            ))}
-          </div>
-        </Card>
-      </Section>
-
-      <Section title="Dos pilares del proyecto">
+      <Section title="Los 2 pilares del proyecto" description="Dos enfoques complementarios para hacer más activo, aplicado y responsable el aprendizaje.">
         <div className="grid gap-6 md:grid-cols-2">
-          <Card className="border-institutional-100 bg-gradient-to-br from-white to-blue-50">
-            <h3 className="text-2xl font-bold text-institutional-900">Aula invertida</h3>
-            <p className="mt-3 leading-7 text-slate-700">Organiza la docencia para que la preparación autónoma previa permita dedicar la sesión presencial a aplicar, debatir, practicar y reflexionar.</p>
-          </Card>
-          <Card className="border-institutional-100 bg-gradient-to-br from-white to-slate-100">
-            <h3 className="text-2xl font-bold text-institutional-900">Inteligencia artificial</h3>
-            <p className="mt-3 leading-7 text-slate-700">Se integra como apoyo crítico, ético y guiado para organizar ideas, crear borradores, revisar contenidos y mejorar evidencias sin sustituir el aprendizaje.</p>
+          <SummaryCard
+            icon="AI"
+            title="Aula Invertida"
+            description="La clase presencial se dedica a aplicar, practicar, debatir y resolver dudas a partir del trabajo previo."
+          />
+          <SummaryCard
+            icon="IA"
+            tone="slate"
+            title="Inteligencia Artificial"
+            description="Herramienta de apoyo para pensar, organizar, revisar y mejorar, sin sustituir la responsabilidad académica."
+          />
+        </div>
+      </Section>
+
+      <Section title="Marco común de actuación" description="Cada asignatura mantiene su autonomía, pero todas comparten una secuencia sencilla y explicable.">
+        <StepFlow steps={commonSteps} compact />
+      </Section>
+
+      <Section title="MARE-A y coordinación docente">
+        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <HighlightBox eyebrow="Relación con MARE-A" title="Un espacio de referencia común">
+            El portal ordena y visibiliza experiencias vinculadas al Grupo de Innovación Docente MARE-A, facilitando coordinación, comunicación y seguimiento.
+          </HighlightBox>
+          <Card>
+            <h3 className="text-xl font-bold text-slate-900">Asignaturas participantes</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">Acceso rápido a los módulos de cada materia.</p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {subjects.map((subject) => (
+                <Link key={subject.slug} href={`/asignaturas/${subject.slug}`} className="rounded-xl border border-slate-200 bg-slate-50 p-4 font-semibold text-slate-700 transition hover:border-institutional-200 hover:bg-institutional-50 hover:text-institutional-900">
+                  <span className="block text-xs font-bold uppercase tracking-[0.16em] text-slate-500">{subject.course}</span>
+                  {subject.name}
+                </Link>
+              ))}
+            </div>
           </Card>
         </div>
       </Section>
 
-      <Section title="Tres fases compartidas">
-        <div className="grid gap-6 md:grid-cols-3">
-          {phases.map((phase) => (
-            <PhaseCard key={phase.step} {...phase} />
-          ))}
-        </div>
+      <Section title="Qué aporta la web" description="Una presentación clara para reuniones docentes, sesiones con alumnado y seguimiento del proyecto.">
+        <InfoGrid>
+          <SummaryCard icon="1" title="Explicación rápida" description="Bloques breves, tarjetas y pasos para comprender el proyecto sin leer textos extensos." />
+          <SummaryCard icon="2" tone="slate" title="Ruta compartida" description="Una secuencia común para preparar, aplicar, evidenciar y evaluar el aprendizaje." />
+          <SummaryCard icon="3" title="Uso responsable" description="Criterios simples para integrar IA con transparencia, guía docente y revisión crítica." />
+        </InfoGrid>
       </Section>
-
-      <div className="rounded-[2rem] bg-white p-8 text-center shadow-soft ring-1 ring-slate-200">
-        <p className="text-2xl font-bold leading-9 text-institutional-900">
-          “Un espacio común para orientar, coordinar y visibilizar las experiencias desarrolladas en las asignaturas participantes”.
-        </p>
-      </div>
     </div>
   );
 }
