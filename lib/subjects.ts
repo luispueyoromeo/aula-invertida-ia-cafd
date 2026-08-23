@@ -16,7 +16,7 @@ export const subjects: Subject[] = [
     name: "Deportes Colectivos",
     course: "2.º curso",
     slug: "deportes-colectivos",
-    professor: "Profesorado responsable pendiente de confirmar",
+    professor: "Javier Álvarez Medina, Víctor Murillo Lorente y Luis Pueyo Romeo",
   },
   {
     name: "Deportes de Lucha y Adversario",
