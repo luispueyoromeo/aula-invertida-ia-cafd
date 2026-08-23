@@ -45,10 +45,10 @@ export default function CuestionarioFinalPage() {
 
       <Section title="Acceso al cuestionario">
         <HighlightBox eyebrow="Google Forms" title="Formulario de respuesta" tone="slate">
-          El cuestionario se responderá mediante Google Forms y las respuestas serán tratadas de forma anónima con fines docentes e investigadores vinculados al proyecto.
+          El cuestionario se responderá mediante Google Forms. Las respuestas serán tratadas de forma anónima con fines docentes e investigadores vinculados al proyecto.
           <div className="mt-6">
             <a
-              href="https://forms.gle/HrrjAXsARvt1jJT77"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfYOvFw0gliNRjPVXMpGIYk3krLC1uJ5rASdR9fH4EpKTe67Q/viewform"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex rounded-full bg-institutional-800 px-6 py-3 text-sm font-bold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-institutional-900 focus:outline-none focus:ring-2 focus:ring-institutional-500 focus:ring-offset-2"
