@@ -18,109 +18,72 @@ const moduleSections = [
   ["Evaluación / cuestionario", "Criterios de valoración y participación en el cuestionario final común."],
 ];
 
+const overview = [
+  { icon: "🏐", title: "Qué se trabaja", text: "Voleibol, baloncesto, balonmano y fútbol", tone: "bg-blue-50 text-blue-800" },
+  { icon: "↗", title: "Cómo se aprende", text: "Preparación previa + práctica en clase + reflexión final", tone: "bg-emerald-50 text-emerald-800" },
+  { icon: "✦", title: "Papel de la IA", text: "Apoyo responsable, ético y declarado", tone: "bg-violet-50 text-violet-800" },
+  { icon: "✓", title: "Qué generará el alumnado", text: "Evidencias variables según el bloque", tone: "bg-amber-50 text-amber-800" },
+];
+
 const sports = [
-  ["Voleibol", "Observación entre iguales y metodología observacional.", "V"],
-  ["Baloncesto", "Enseñanza en grupos reducidos.", "B"],
-  ["Balonmano", "Enseñanza al gran grupo.", "BM"],
-  ["Fútbol", "Enseñanza individualizada.", "F"],
+  { icon: "🏐", title: "Voleibol", text: "Observación entre iguales", color: "border-blue-200 bg-blue-50" },
+  { icon: "🏀", title: "Baloncesto", text: "Enseñanza en grupos reducidos", color: "border-orange-200 bg-orange-50" },
+  { icon: "🤾", title: "Balonmano", text: "Enseñanza al gran grupo", color: "border-emerald-200 bg-emerald-50" },
+  { icon: "⚽", title: "Fútbol", text: "Enseñanza individualizada", color: "border-violet-200 bg-violet-50" },
+];
+
+const phases = [
+  { number: "01", icon: "◷", title: "Antes", subtitle: "Preparar", items: ["Revisar materiales", "Analizar contenidos", "Preparar ideas"], color: "bg-blue-50 text-blue-900", badge: "bg-blue-700" },
+  { number: "02", icon: "▶", title: "Durante", subtitle: "Poner en práctica", items: ["Práctica", "Análisis", "Diseño de tareas", "Participación activa"], color: "bg-emerald-50 text-emerald-900", badge: "bg-emerald-700" },
+  { number: "03", icon: "✓", title: "Después", subtitle: "Cerrar el proceso", items: ["Revisar", "Mejorar", "Reflexionar", "Entregar evidencia"], color: "bg-amber-50 text-amber-900", badge: "bg-amber-600" },
 ];
 
 const studentExpectations = [
-  "Preparar previamente los contenidos o materiales indicados.",
-  "Participar de forma activa en las sesiones prácticas.",
-  "Aplicar los contenidos a situaciones reales o simuladas de enseñanza deportiva.",
-  "Diseñar, adaptar, observar o analizar tareas vinculadas a los deportes colectivos.",
-  "Reflexionar sobre la utilidad de los contenidos trabajados.",
-  "Elaborar una evidencia de aprendizaje adaptada al bloque correspondiente.",
-  "Responder el cuestionario final del proyecto.",
+  ["📚", "Preparar materiales previos"], ["🙋", "Participar activamente"],
+  ["🎯", "Aplicar contenidos en la práctica"], ["👁", "Observar, analizar o diseñar tareas"],
+  ["📝", "Elaborar una evidencia"], ["☑", "Responder el cuestionario final"],
 ];
 
-const evidence = [
-  "Ficha de tarea o sesión", "Propuesta de intervención", "Análisis de una situación de juego",
-  "Diseño de actividad técnico-táctica", "Registro de observación entre iguales",
-  "Material docente creado por el alumnado", "Reflexión o autoevaluación", "Coevaluación entre iguales",
+const aiPrinciples = [
+  ["✦", "Apoyo", "Ayuda a organizar, revisar o generar ideas"],
+  ["◉", "Declaración", "Si se usa, debe indicarse"],
+  ["⌕", "Revisión crítica", "La información debe comprobarse y adaptarse"],
+  ["♢", "Honestidad académica", "No sustituye el trabajo personal"],
 ];
 
-function BulletList({ items }: { items: string[] }) {
-  return <ul className="mt-5 grid gap-3 sm:grid-cols-2">{items.map((item) => <li key={item} className="flex gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4 text-sm font-medium leading-6 text-slate-700"><span className="font-black text-institutional-700" aria-hidden="true">✓</span><span>{item}</span></li>)}</ul>;
+const evidence = ["ficha de tarea", "propuesta práctica", "análisis de juego", "observación entre iguales", "material docente", "reflexión", "coevaluación"];
+
+function VisualTitle({ number, title }: { number: string; title: string }) {
+  return <div className="mb-6 flex items-center gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-institutional-800 text-xs font-black text-white">{number}</span><h2 className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">{title}</h2></div>;
 }
 
 function CollectiveSportsPage() {
-  return <div>
-    <PageHeader eyebrow="Asignatura piloto · 2.º curso" title="Deportes Colectivos" description="Grado en Ciencias de la Actividad Física y del Deporte">
-      <div className="flex flex-wrap gap-2 text-sm font-semibold">
-        <span className="rounded-full bg-white/15 px-4 py-2 ring-1 ring-white/25">Voleibol</span>
-        <span className="rounded-full bg-white/15 px-4 py-2 ring-1 ring-white/25">Baloncesto</span>
-        <span className="rounded-full bg-white/15 px-4 py-2 ring-1 ring-white/25">Balonmano</span>
-        <span className="rounded-full bg-white/15 px-4 py-2 ring-1 ring-white/25">Fútbol</span>
+  return <div className="space-y-2">
+    <header className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-institutional-900 via-blue-800 to-slate-800 px-6 py-9 text-white shadow-soft md:px-10 md:py-11">
+      <div className="absolute -right-12 -top-16 h-56 w-56 rounded-full border-[32px] border-white/5" aria-hidden="true" />
+      <div className="relative">
+        <div className="flex flex-wrap gap-2"><span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-wider ring-1 ring-white/20">2.º curso</span><span className="rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-100 ring-1 ring-emerald-300/30">Asignatura piloto</span></div>
+        <h1 className="mt-5 text-4xl font-black tracking-tight md:text-6xl">Deportes Colectivos</h1>
+        <p className="mt-3 text-lg font-medium text-blue-100">Asignatura piloto del proyecto Aula Invertida e IA en CAFD</p>
+        <div className="mt-7 max-w-4xl border-t border-white/15 pt-5"><p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">Profesorado</p><p className="mt-1 text-sm leading-6 text-white/90 md:text-base">Javier Álvarez Medina · Víctor Murillo Lorente · Luis Pueyo Romeo</p></div>
       </div>
-    </PageHeader>
+    </header>
 
-    <Section eyebrow="Punto de partida" title="La asignatura dentro del proyecto">
-      <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <SummaryCard icon="DC" title="Ficha de la asignatura" description="Asignatura participante en el proyecto de Aula Invertida e IA en CAFD." tone="slate">
-          <dl className="space-y-3 text-sm">
-            <div className="rounded-xl bg-white p-3 ring-1 ring-slate-200"><dt className="text-xs font-bold uppercase tracking-wider text-slate-500">Curso</dt><dd className="mt-1 font-semibold text-slate-800">2.º curso</dd></div>
-            <div className="rounded-xl bg-white p-3 ring-1 ring-slate-200"><dt className="text-xs font-bold uppercase tracking-wider text-slate-500">Titulación</dt><dd className="mt-1 font-semibold text-slate-800">Grado en Ciencias de la Actividad Física y del Deporte</dd></div>
-            <div className="rounded-xl bg-white p-3 ring-1 ring-slate-200"><dt className="text-xs font-bold uppercase tracking-wider text-slate-500">Profesorado responsable</dt><dd className="mt-1 font-semibold leading-6 text-slate-800">Javier Álvarez Medina, Víctor Murillo Lorente y Luis Pueyo Romeo</dd></div>
-          </dl>
-        </SummaryCard>
-        <Card className="space-y-4 leading-7 text-slate-700">
-          <p>Deportes Colectivos participa en el proyecto como una asignatura especialmente vinculada a la aplicación práctica de contenidos técnico-tácticos, metodológicos y didácticos propios de los deportes de colaboración-oposición.</p>
-          <p>La asignatura se organiza en cuatro bloques de contenido: voleibol, baloncesto, balonmano y fútbol. Cada bloque permite aplicar una forma específica de intervención docente, favoreciendo que el alumnado experimente diferentes maneras de enseñar, observar, analizar y adaptar las tareas en contextos deportivos.</p>
-          <p className="rounded-xl bg-institutional-50 p-4 font-semibold text-institutional-900">El objetivo dentro del proyecto es reforzar el papel activo del alumnado mediante la preparación previa, la aplicación práctica en clase, la reflexión sobre la intervención docente y la generación de evidencias de aprendizaje vinculadas a cada bloque.</p>
-        </Card>
-      </div>
-    </Section>
+    <Section title="De un vistazo" className="pb-6"><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{overview.map((item) => <article key={item.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft"><span className={`flex h-11 w-11 items-center justify-center rounded-xl text-xl font-black ${item.tone}`} aria-hidden="true">{item.icon}</span><h3 className="mt-4 font-bold text-slate-950">{item.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p></article>)}</div></Section>
 
-    <Section eyebrow="Cuatro deportes, cuatro enfoques" title="Bloques de contenido y enfoque metodológico">
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{sports.map(([title, description, icon], index) => <IconCard key={title} title={title} description={description} icon={icon} tone={index % 2 ? "slate" : "blue"} />)}</div>
-    </Section>
+    <section className="py-7"><VisualTitle number="01" title="Bloques de contenido" /><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{sports.map((sport) => <article key={sport.title} className={`rounded-2xl border p-5 ${sport.color}`}><span className="text-3xl" aria-hidden="true">{sport.icon}</span><h3 className="mt-3 text-lg font-extrabold text-slate-950">{sport.title}</h3><p className="mt-1 text-sm font-medium text-slate-600">{sport.text}</p></article>)}</div></section>
 
-    <Section eyebrow="Secuencia de aprendizaje" title="Propuesta de aula invertida" description="La experiencia conecta la preparación autónoma, la práctica presencial y la reflexión posterior.">
-      <div className="grid gap-5 lg:grid-cols-3">
-        <SummaryCard eyebrow="Antes de la sesión" icon="1" title="Preparar" description="El alumnado podrá trabajar previamente con materiales, documentos, vídeos, ejemplos de tareas o contenidos vinculados al deporte colectivo correspondiente. Esta preparación permitirá llegar a la sesión presencial con una base inicial sobre los conceptos que posteriormente serán aplicados en clase." tone="blue">
-          <ul className="space-y-2 text-sm leading-6 text-slate-700">{["Revisión de contenidos técnico-tácticos", "Análisis de vídeos o situaciones de juego", "Preparación de propuestas de tareas", "Lectura o consulta de materiales docentes", "Elaboración inicial de ideas para una intervención práctica"].map(x => <li key={x} className="flex gap-2"><span className="text-institutional-700">→</span>{x}</li>)}</ul>
-        </SummaryCard>
-        <SummaryCard eyebrow="Durante la sesión" icon="2" title="Aplicar" description="El tiempo presencial se orientará a la aplicación práctica de los contenidos trabajados previamente. El alumnado participará en tareas, situaciones de juego, análisis de problemas, diseño de propuestas y experiencias de enseñanza-aprendizaje vinculadas a los deportes colectivos." tone="green">
-          <ul className="space-y-2 text-sm leading-6 text-slate-700"><li><strong>Voleibol:</strong> observación entre iguales.</li><li><strong>Baloncesto:</strong> enseñanza en grupos reducidos.</li><li><strong>Balonmano:</strong> enseñanza al gran grupo.</li><li><strong>Fútbol:</strong> enseñanza individualizada.</li></ul>
-        </SummaryCard>
-        <SummaryCard eyebrow="Después de la sesión" icon="3" title="Reflexionar y mejorar" description="Tras la sesión, el alumnado podrá completar, revisar o mejorar la evidencia generada, incorporando la retroalimentación recibida y reflexionando sobre la transferencia de los contenidos a contextos reales de enseñanza o entrenamiento." tone="amber" />
-      </div>
-    </Section>
+    <section className="py-7"><VisualTitle number="02" title="Cómo funciona el aula invertida" /><div className="grid gap-4 lg:grid-cols-3">{phases.map((phase, index) => <article key={phase.title} className={`relative rounded-3xl p-6 ${phase.color}`}><div className="flex items-start justify-between"><span className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-black text-white ${phase.badge}`} aria-hidden="true">{phase.icon}</span><span className="text-4xl font-black opacity-10">{phase.number}</span></div><h3 className="mt-5 text-2xl font-black">{phase.title}</h3><p className="text-sm font-bold opacity-70">{phase.subtitle}</p><ul className="mt-4 flex flex-wrap gap-2">{phase.items.map(item => <li key={item} className="rounded-full bg-white/80 px-3 py-1.5 text-xs font-bold shadow-sm">{item}</li>)}</ul>{index < 2 ? <span className="absolute -right-3 top-1/2 z-10 hidden h-7 w-7 items-center justify-center rounded-full bg-white text-slate-400 shadow lg:flex" aria-hidden="true">→</span> : null}</article>)}</div></section>
 
-    <Section eyebrow="Participación activa" title="Qué se espera del alumnado"><BulletList items={studentExpectations} /></Section>
+    <section className="py-7"><VisualTitle number="03" title="Qué se espera del alumnado" /><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{studentExpectations.map(([icon, text]) => <div key={text} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-lg" aria-hidden="true">{icon}</span><p className="text-sm font-bold text-slate-800">{text}</p></div>)}</div></section>
 
-    <Section eyebrow="Acompañamiento docente" title="Papel del profesorado">
-      <Card className="grid gap-5 leading-7 text-slate-700 md:grid-cols-2">
-        <p>El profesorado diseñará la experiencia de aula invertida, organizará los materiales de trabajo previo y estructurará las sesiones presenciales para favorecer la aplicación práctica, la reflexión y la transferencia de los contenidos.</p>
-        <p>Su papel será seleccionar o diseñar los materiales previos, organizar las situaciones prácticas, facilitar la participación del alumnado, resolver dudas vinculadas a la asignatura y proporcionar retroalimentación sobre las tareas o evidencias generadas.</p>
-        <p className="rounded-xl bg-institutional-50 p-4 font-semibold text-institutional-900 md:col-span-2">Asimismo, se recordarán los criterios comunes de uso responsable, ético y declarado de la inteligencia artificial cuando el alumnado recurra a estas herramientas como apoyo para el aprendizaje.</p>
-      </Card>
-    </Section>
+    <section className="py-7"><VisualTitle number="04" title="IA en esta asignatura" /><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{aiPrinciples.map(([icon, title, text]) => <article key={title} className="rounded-2xl border border-violet-100 bg-gradient-to-br from-white to-violet-50 p-5"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-lg font-black text-violet-800" aria-hidden="true">{icon}</span><h3 className="mt-4 font-extrabold text-slate-950">{title}</h3><p className="mt-2 text-sm leading-5 text-slate-600">{text}</p></article>)}</div></section>
 
-    <Section eyebrow="Criterios comunes" title="Uso responsable de IA en la asignatura" description="En Deportes Colectivos, la inteligencia artificial podrá utilizarse como herramienta de apoyo para organizar ideas, revisar materiales, generar ejemplos iniciales, contrastar propuestas o mejorar la presentación de trabajos. Su uso no sustituirá en ningún caso la comprensión personal, la participación práctica ni la elaboración propia del alumnado.">
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <IconCard icon="A" title="Apoyo, no sustitución" description="La IA puede ayudar a ordenar o revisar ideas, pero no reemplaza el trabajo personal." tone="blue" />
-        <IconCard icon="D" title="Uso declarado" description="Cuando se utilice IA en una tarea académica, deberá indicarse de forma transparente." tone="green" />
-        <IconCard icon="R" title="Revisión crítica" description="Toda información generada mediante IA deberá ser revisada, contrastada y adaptada al contexto de la asignatura." tone="amber" />
-        <IconCard icon="H" title="Honestidad académica" description="La evidencia final debe reflejar la comprensión real del estudiante." tone="slate" />
-      </div>
-    </Section>
+    <section className="py-7"><VisualTitle number="05" title="Producto o evidencia" /><div className="overflow-hidden rounded-3xl border border-institutional-100 bg-gradient-to-r from-institutional-900 to-blue-700 p-6 text-white shadow-soft md:p-8"><div className="grid gap-6 md:grid-cols-[auto_1fr] md:items-center"><span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 text-3xl" aria-hidden="true">📎</span><div><p className="text-xl font-extrabold md:text-2xl">La evidencia final será variable según el bloque trabajado</p><div className="mt-5 flex flex-wrap gap-2">{evidence.map(item => <span key={item} className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold ring-1 ring-white/20">{item}</span>)}</div></div></div></div></section>
 
-    <Section eyebrow="Resultado del proceso" title="Producto o evidencia de aprendizaje" description="La evidencia de aprendizaje podrá concretarse en función del bloque de contenido trabajado y de la actividad diseñada por el profesorado.">
-      <BulletList items={evidence} />
-      <p className="mt-5 rounded-2xl border border-institutional-100 bg-institutional-50 p-5 font-semibold leading-7 text-institutional-900">La evidencia final se mantendrá abierta y adaptable al enfoque metodológico de cada bloque.</p>
-    </Section>
+    <section className="py-7"><VisualTitle number="06" title="Evaluación y seguimiento" /><div className="grid gap-4 lg:grid-cols-[1fr_1fr_1fr_auto]">{[["🙋", "Participación"], ["📄", "Evidencia generada"], ["☑", "Cuestionario final"]].map(([icon, text]) => <div key={text} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 font-bold text-slate-800"><span className="text-2xl" aria-hidden="true">{icon}</span>{text}</div>)}<Link href="/cuestionario-final" className="flex items-center justify-center rounded-2xl bg-emerald-700 px-6 py-4 text-center text-sm font-bold text-white shadow-soft transition hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-200">Ir al cuestionario final <span className="ml-2" aria-hidden="true">→</span></Link></div></section>
 
-    <Section eyebrow="Valoración de la experiencia" title="Evaluación y seguimiento">
-      <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-        <Card className="space-y-4 leading-7 text-slate-700"><p>La experiencia se valorará a través de las evidencias generadas por el alumnado, la participación en las sesiones, la aplicación práctica de los contenidos y la reflexión sobre el proceso de aprendizaje.</p><p>Además, el alumnado responderá el cuestionario final común del proyecto, orientado a conocer su percepción sobre el aula invertida y el uso académico de la inteligencia artificial generativa.</p><p>Este cuestionario permitirá analizar la utilidad percibida de la experiencia, el grado de participación activa, la integración de la IA y posibles mejoras para futuras aplicaciones.</p></Card>
-        <HighlightBox eyebrow="Cuestionario común" title="Comparte tu experiencia" tone="green"><p className="text-base font-normal">Tu valoración ayudará a revisar y mejorar las siguientes aplicaciones del proyecto.</p><Link href="/cuestionario-final" className="mt-5 inline-flex rounded-xl border border-institutional-700 bg-white px-5 py-3 text-sm font-bold text-institutional-800 transition hover:bg-institutional-50">Ir al cuestionario final <span className="ml-2" aria-hidden="true">→</span></Link></HighlightBox>
-      </div>
-    </Section>
-
-    <aside className="mt-9 rounded-[2rem] border border-dashed border-institutional-300 bg-institutional-50 p-7 md:p-9"><span className="inline-flex rounded-full bg-institutional-800 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">Módulo piloto en desarrollo</span><h2 className="mt-4 text-2xl font-bold text-institutional-900">Una estructura para seguir construyendo</h2><p className="mt-3 max-w-4xl leading-7 text-slate-700">Esta página funciona como modelo inicial para el desarrollo del resto de asignaturas participantes. Su estructura podrá ajustarse posteriormente a partir de la revisión del equipo docente y de la información específica aportada por cada profesor o profesora responsable.</p></aside>
+    <aside className="mt-5 flex items-center gap-3 rounded-2xl border border-dashed border-institutional-300 bg-institutional-50 p-5"><span className="h-2.5 w-2.5 rounded-full bg-amber-500" aria-hidden="true" /><p className="text-sm font-bold text-institutional-900">Módulo piloto en desarrollo</p></aside>
   </div>;
 }
 
