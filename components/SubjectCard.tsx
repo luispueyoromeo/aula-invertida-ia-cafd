@@ -14,7 +14,9 @@ export function SubjectCard({ subject }: SubjectCardProps) {
       </div>
       <h2 className="mt-4 text-xl font-bold leading-7 text-slate-900">{subject.name}</h2>
       <p className="mt-3 text-sm leading-6 text-slate-600">Módulo preparado para completar la experiencia específica de la asignatura.</p>
-      <p className="mt-4 w-fit rounded-full bg-white px-3 py-2 text-xs font-bold text-slate-600 ring-1 ring-slate-200">Contenido en elaboración</p>
+      {subject.slug !== "deportes-colectivos" && (
+        <p className="mt-4 w-fit rounded-full bg-white px-3 py-2 text-xs font-bold text-slate-600 ring-1 ring-slate-200">Contenido en elaboración</p>
+      )}
       <Link
         href={`/asignaturas/${subject.slug}`}
         className="mt-5 inline-flex w-fit items-center rounded-full bg-institutional-800 px-5 py-3 text-sm font-bold text-white transition hover:bg-institutional-900"
