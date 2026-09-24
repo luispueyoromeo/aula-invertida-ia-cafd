@@ -13,8 +13,12 @@ export function SubjectCard({ subject }: SubjectCardProps) {
         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-institutional-100 text-sm font-black text-institutional-900" aria-hidden="true">→</span>
       </div>
       <h2 className="mt-4 text-xl font-bold leading-7 text-slate-900">{subject.name}</h2>
-      <p className="mt-3 text-sm leading-6 text-slate-600">Módulo preparado para completar la experiencia específica de la asignatura.</p>
-      {subject.slug !== "deportes-colectivos" && (
+      <p className="mt-3 text-sm leading-6 text-slate-600">
+        {subject.slug === "entrenamiento"
+          ? "Planificación y toma de decisiones adaptadas a cada etapa y persona."
+          : "Módulo preparado para completar la experiencia específica de la asignatura."}
+      </p>
+      {subject.slug !== "deportes-colectivos" && subject.slug !== "entrenamiento" && (
         <p className="mt-4 w-fit rounded-full bg-white px-3 py-2 text-xs font-bold text-slate-600 ring-1 ring-slate-200">Contenido en elaboración</p>
       )}
       <Link

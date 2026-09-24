@@ -37,10 +37,10 @@ export const subjects: Subject[] = [
     professor: "Profesorado responsable pendiente de confirmar",
   },
   {
-    name: "Entrenamiento",
-    course: "3.º curso",
+    name: "Entrenamiento en Distintas Etapas Evolutivas",
+    course: "4.º curso",
     slug: "entrenamiento",
-    professor: "Profesorado responsable pendiente de confirmar",
+    professor: "Prof. Dr. Isaac López-Laval",
   },
   {
     name: "Actividades Físico-Deportivas en la Naturaleza",
